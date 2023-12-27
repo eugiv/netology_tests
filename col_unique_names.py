@@ -42,11 +42,7 @@ all_names_list = extract_names(all_list)
 
 def unique_names(names_list: list):
     uni_names = list(set(names_list))
-
     all_names_sorted = sorted(uni_names)
-    separator = ", "
-    # print(f'Уникальные имена преподавателей: {separator.join(all_names_sorted)}')
-    print(all_names_sorted)
 
     return all_names_sorted
 

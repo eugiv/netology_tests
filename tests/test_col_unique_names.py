@@ -1,5 +1,3 @@
-import pytest
-
 from col_unique_names import flat_init_list, extract_names, unique_names
 
 test_list =[
@@ -33,6 +31,7 @@ def test_extract_names():
 
 
 test_extract_res = extract_names(test_flat_result)
+
 
 def test_unique_names():
     result = unique_names(test_extract_res)

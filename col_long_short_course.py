@@ -1,38 +1,36 @@
 
+courses = ["Java-разработчик с нуля", "Fullstack-разработчик на Python", "Python-разработчик с нуля",
+		   "Frontend-разработчик с нуля"]
 
-courses = ["Java-разработчик с нуля", "Fullstack-разработчик на Python", "Python-разработчик с нуля", "Frontend-разработчик с нуля"]
-mentors = [
-	["Филипп Воронов", "Анна Юшина", "Иван Бочаров", "Анатолий Корсаков", "Юрий Пеньков", "Илья Сухачев", "Иван Маркитан", "Ринат Бибиков", "Вадим Ерошевичев", "Тимур Сейсембаев", "Максим Батырев", "Никита Шумский", "Алексей Степанов", "Денис Коротков", "Антон Глушков", "Сергей Индюков", "Максим Воронцов", "Евгений Грязнов", "Константин Виролайнен", "Сергей Сердюк", "Павел Дерендяев"],
-	["Евгений Шмаргунов", "Олег Булыгин", "Александр Бардин", "Александр Иванов", "Кирилл Табельский", "Александр Ульянцев", "Роман Гордиенко", "Адилет Асканжоев", "Александр Шлейко", "Алена Батицкая", "Денис Ежков", "Владимир Чебукин", "Эдгар Нуруллин", "Евгений Шек", "Максим Филипенко", "Елена Никитина"],
-	["Евгений Шмаргунов", "Олег Булыгин", "Дмитрий Демидов", "Кирилл Табельский", "Александр Ульянцев", "Александр Бардин", "Александр Иванов", "Антон Солонилин", "Максим Филипенко", "Елена Никитина", "Азамат Искаков", "Роман Гордиенко"],
-	["Владимир Чебукин", "Эдгар Нуруллин", "Евгений Шек", "Валерий Хаслер", "Татьяна Тен", "Александр Фитискин", "Александр Шлейко", "Алена Батицкая", "Александр Беспоясов", "Денис Ежков", "Николай Лопин", "Михаил Ларченко"]
-]
 durations = [14, 20, 12, 20]
 
-courses_list = []
 
-for c, i, j in zip(courses, mentors, durations):
-    course_dict = {"title": c, "mentors": i, "duration": j}
-    courses_list.append(course_dict)
+def list_of_courses():
+	courses_list = []
+	for c, i in zip(courses, durations):
+		course_dict = {"title": c, "duration": i}
+		courses_list.append(course_dict)
 
-min = min([item["duration"] for item in courses_list])
-max = max([item["duration"] for item in courses_list])
+	return courses_list
+
+
+min = min([item["duration"] for item in list_of_courses()])
+max = max([item["duration"] for item in list_of_courses()])
 
 maxes = []
 minis = []
-
-for ind, dur in enumerate(durations):
+for idx, dur in enumerate(durations):
 	if dur == max:
-		maxes.append(ind)
+		maxes.append(idx)
 	elif dur == min:
-		minis.append(ind)
+		minis.append(idx)
 
 courses_min = []
 courses_max = []
 for id in minis:
-	courses_min.append(courses_list[id]["title"])
+	courses_min.append(list_of_courses()[id]["title"])
 for id in maxes:
-	courses_max.append(courses_list[id]["title"])
+	courses_max.append(list_of_courses()[id]["title"])
 
 courses_min = ", ".join(courses_min)
 courses_max = ", ".join(courses_max)
