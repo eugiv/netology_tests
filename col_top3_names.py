@@ -1,8 +1,4 @@
 
-
-courses = ["Python-разработчик с нуля", "Java-разработчик с нуля", "Fullstack-разработчик на Python",
-           "Frontend-разработчик с нуля"]
-
 mentors = [
     ["Евгений Шмаргунов", "Олег Булыгин", "Дмитрий Демидов", "Кирилл Табельский", "Александр Ульянцев",
      "Александр Бардин", "Александр Иванов", "Антон Солонилин", "Максим Филипенко", "Елена Никитина", "Азамат Искаков",
@@ -18,35 +14,36 @@ mentors = [
      "Александр Шлейко", "Алена Батицкая", "Александр Беспоясов", "Денис Ежков", "Николай Лопин", "Михаил Ларченко"]
 ]
 
-all_list = []
-for m in mentors:
-    all_list.extend(m)
 
-all_names_list = []
-for mentor in all_list:
-    mentor = list([mentor])
-    for name in mentor:
-        name = name.split()[0]
-    all_names_list.append(name)
+def extract_names(names_lst: list) -> list:
+    all_list = []
+    for m in names_lst:
+        all_list.extend(m)
+
+    all_names_list = []
+    for mentor in all_list:
+        mentor = list([mentor])
+        for name in mentor:
+            name = name.split()[0]
+        all_names_list.append(name)
+
+    return all_names_list
 
 
-unique_names = list(set(all_names_list))
+def names_count(names_lst, list_length):
 
-all_names_sorted = sorted(unique_names)
+    popular = []
+    for name in names_lst:
+        count_names = names_lst.count(name)
+        popular.append((name, count_names))
+    popular = list(set(popular))
 
-separator = ", "
+    popular.sort(key=lambda x: x[1], reverse=True)
 
-unique_names = all_names_list
+    top_3 = popular[:list_length]
+    return top_3
 
-popular = []
-for name in unique_names:
-    count_names = unique_names.count(name)
-    popular.append((name, count_names))  # Добавьте подсчёт имён
-popular = list(set(popular))
 
-popular.sort(key=lambda x: x[1], reverse=True)
-popular = [f"{name}: {count} раз(а)" for name, count in popular]
-
-top_3 = popular[:3]
-top_3 = separator.join(top_3)
-print(top_3)
+if __name__ == "__main__":
+    all_names_list = extract_names(mentors)
+    names_count(all_names_list, 3)

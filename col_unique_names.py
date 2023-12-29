@@ -23,9 +23,6 @@ def flat_init_list(init_list: list):
     return full_list
 
 
-all_list = flat_init_list(mentors)
-
-
 def extract_names(full_list: list):
     all_names_list = []
     for mentor in full_list:
@@ -37,9 +34,6 @@ def extract_names(full_list: list):
     return all_names_list
 
 
-all_names_list = extract_names(all_list)
-
-
 def unique_names(names_list: list):
     uni_names = list(set(names_list))
     all_names_sorted = sorted(uni_names)
@@ -47,4 +41,7 @@ def unique_names(names_list: list):
     return all_names_sorted
 
 
-unique_names(all_names_list)
+if __name__ == "__main__":
+    all_list = flat_init_list(mentors)
+    all_names_list = extract_names(all_list)
+    unique_names(all_names_list)

@@ -5,7 +5,7 @@ courses = ["Java-разработчик с нуля", "Fullstack-разрабо�
 durations = [14, 20, 12, 20]
 
 
-def list_of_courses():
+def list_of_courses(courses, durations):
 	courses_list = []
 	for c, i in zip(courses, durations):
 		course_dict = {"title": c, "duration": i}
@@ -14,26 +14,28 @@ def list_of_courses():
 	return courses_list
 
 
-min = min([item["duration"] for item in list_of_courses()])
-max = max([item["duration"] for item in list_of_courses()])
+def max_min_crs(courses_lst, durat):
+	min_val = min([item["duration"] for item in courses_lst])
+	max_val = max([item["duration"] for item in courses_lst])
 
-maxes = []
-minis = []
-for idx, dur in enumerate(durations):
-	if dur == max:
-		maxes.append(idx)
-	elif dur == min:
-		minis.append(idx)
+	maxes = []
+	minis = []
+	for idx, dur in enumerate(durat):
+		if dur == max_val:
+			maxes.append(idx)
+		elif dur == min_val:
+			minis.append(idx)
 
-courses_min = []
-courses_max = []
-for id in minis:
-	courses_min.append(list_of_courses()[id]["title"])
-for id in maxes:
-	courses_max.append(list_of_courses()[id]["title"])
+	courses_min = []
+	courses_max = []
+	for id_min in minis:
+		courses_min.append(courses_lst[id_min]["title"])
+	for id_max in maxes:
+		courses_max.append(courses_lst[id_max]["title"])
 
-courses_min = ", ".join(courses_min)
-courses_max = ", ".join(courses_max)
+	return courses_min, courses_max
 
-print(f'Самый короткий курс(ы): {courses_min} - {min} месяца(ев)')
-print(f'Самый длинный курс(ы): {courses_max} - {max} месяца(ев)')
+
+if __name__ == "__main__":
+	courses_list = list_of_courses(courses, durations)
+	max_min_crs(courses_list, durations)
