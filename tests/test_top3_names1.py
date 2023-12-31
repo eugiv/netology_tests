@@ -1,6 +1,6 @@
 import pytest
 
-from col_top3_names import mentors, extract_names, names_count
+from col_top3_names1 import mentors, extract_names, names_count
 
 
 def test_extract_names():

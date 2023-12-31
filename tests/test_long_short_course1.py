@@ -1,4 +1,4 @@
-from col_long_short_course import list_of_courses, max_min_crs
+from col_long_short_course1 import list_of_courses, max_min_crs
 
 test_courses = ["Java-разработчик с нуля", "Fullstack-разработчик на Python"]
 

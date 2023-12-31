@@ -1,4 +1,4 @@
-from col_unique_names import flat_init_list, extract_names, unique_names
+from col_unique_names1 import flat_init_list, extract_names, unique_names
 
 test_list = [
     ["Евгений Шмаргунов", "Олег Булыгин"],
